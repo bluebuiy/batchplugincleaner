@@ -1,6 +1,7 @@
 # by bluebuiy
 # for mo 2.5.0+
-# use at your own risk
+# use at your own risk.
+# Licensed under GPL3
 
 import mobase
 import re
@@ -25,7 +26,7 @@ class PluginSelectionLine(QWidget):
 
     def setState(self, state):
         if (state == True):
-            self.__checkbox.setCheckState(2)    # 2
+            self.__checkbox.setCheckState(2)  # 2
         else:
             self.__checkbox.setCheckState(0)  # 0
 
@@ -192,7 +193,7 @@ class CleanerPlugin(mobase.IPluginTool):
         return "Clean all plugins with one button. Requres SSEEdit."
 
     def version(self):
-        return mobase.VersionInfo(0, 7, 0, mobase.ReleaseType.CANDIDATE)
+        return mobase.VersionInfo(0, 8, 0, mobase.ReleaseType.CANDIDATE)
 
     def isActive(self):
         return self.__organizer.pluginSetting(self.name(), "enabled")
@@ -230,7 +231,7 @@ class CleanerPlugin(mobase.IPluginTool):
 
         # exclude Skyrim.esm because it should not be cleaned.
         bethPlugins = { "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm" }
-        matcher = re.compile("cc\w{6}[0-9]{3}-")
+        matcher = re.compile(r"cc\w{6}[0-9]{3}-")
         cleanCC = self.__organizer.pluginSetting(self.name(), "clean_cc")
         cleanBeth = self.__organizer.pluginSetting(self.name(), "clean_beth")
         cleanElse = self.__organizer.pluginSetting(self.name(), "clean_else")
